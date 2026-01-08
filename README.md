@@ -13,6 +13,8 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk diff`    compare deployed stack with current state
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
+<svg width="50" height="50" xmlns="http://www.w3.org/2000/svg"> <circle cx="25" cy="25" r="20" fill="blue" stroke="black" stroke-width="2"/> </svg>
+
 
 <div style="position: relative; width: 100%; min-height: 200px; overflow: hidden;">
   <div
