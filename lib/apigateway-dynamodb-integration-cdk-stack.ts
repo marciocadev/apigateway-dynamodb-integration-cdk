@@ -1,16 +1,22 @@
-import * as cdk from 'aws-cdk-lib/core';
+import { AttributeType, Table } from 'aws-cdk-lib/aws-dynamodb';
+import { RemovalPolicy, Stack, StackProps } from 'aws-cdk-lib/core';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
-export class ApigatewayDynamodbIntegrationCdkStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+export class ApigatewayDynamodbIntegrationCdkStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'ApigatewayDynamodbIntegrationCdkQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const table = new Table(this, "table", {
+      tableName: "apigateway-dynamodb-integration-db",
+      partitionKey: {
+        name: "Artist",
+        type: AttributeType.STRING,
+      },
+      sortKey: {
+        name: "Album",
+        type: AttributeType.STRING,
+      },
+      removalPolicy: RemovalPolicy.DESTROY,
+    });
   }
 }
