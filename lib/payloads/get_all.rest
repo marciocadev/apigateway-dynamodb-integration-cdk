@@ -1,0 +1,3 @@
+###
+# @prompt ID
+GET https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod HTTP/1.1

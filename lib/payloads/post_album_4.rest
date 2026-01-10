@@ -1,0 +1,43 @@
+###
+# @prompt ID
+POST https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod/album HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Dream Theater",
+  "album": "When Dream and Day Unite",
+  "tracks": [
+    {
+      "title": "A Fortune in Lies",
+      "length": "5:12"
+    },
+    {
+      "title": "Status Seeker",
+      "length": "4:17"
+    },
+    {
+      "title": "The Ytse Jam",
+      "length": "5:46"
+    },
+    {
+      "title": "The Killing Hand",
+      "length": "8:41"
+    },
+    {
+      "title": "Light Fuse and Get Away",
+      "length": "7:23"
+    },
+    {
+      "title": "Afterlife",
+      "length": "5:26"
+    },
+    {
+      "title": "The Ones Who Help to Set the Sun",
+      "length": "8:05"
+    },
+    {
+      "title": "Only a Matter of Time",
+      "length": "6:35"
+    }
+  ]
+}

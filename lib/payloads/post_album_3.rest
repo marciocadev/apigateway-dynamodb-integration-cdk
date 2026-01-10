@@ -1,0 +1,43 @@
+###
+# @prompt ID
+POST https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod/album HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Snarky Puppy",
+  "album": "We Like It Here",
+  "tracks": [
+    {
+      "title": "Shofukan",
+      "length": "6:33"
+    },
+    {
+      "title": "What About Me?",
+      "length": "6:42"
+    },
+    {
+      "title": "Sleeper",
+      "length": "6:51"
+    },
+    {
+      "title": "Jambone",
+      "length": "5:07"
+    },
+    {
+      "title": "Kite",
+      "length": "6:12"
+    },
+    {
+      "title": "Outlier",
+      "length": "6:45"
+    },
+    {
+      "title": "Tio Macaco",
+      "length": "5:43"
+    },
+    {
+      "title": "Lingus",
+      "length": "10:45"
+    }
+  ]
+}

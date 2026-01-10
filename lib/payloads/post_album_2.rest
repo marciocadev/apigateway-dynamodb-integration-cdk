@@ -1,0 +1,39 @@
+###
+# @prompt ID
+POST https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod/album HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Rush",
+  "album": "Moving Pictures",
+  "tracks": [
+    {
+      "title": "Tom Sawyer",
+      "length": "4:34"
+    },
+    {
+      "title": "Red Barchetta",
+      "length": "6:10"
+    },
+    {
+      "title": "YYZ",
+      "length": "4:26"
+    },
+    {
+      "title": "Limelight",
+      "length": "4:20"
+    },
+    {
+      "title": "The Camera Eye",
+      "length": "11:00"
+    },
+    {
+      "title": "Witch Hunt",
+      "length": "4:46"
+    },
+    {
+      "title": "Vital Signs",
+      "length": "4:44"
+    }
+  ]
+}

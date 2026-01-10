@@ -1,0 +1,43 @@
+###
+# @prompt ID
+POST https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod/album HTTP/1.1
+content-type: application/json
+
+{
+  "artist": "Dream Theater",
+  "album": "Images and Words",
+  "tracks": [
+    {
+      "title": "Pull Me Under",
+      "length": "8:14"
+    },
+    {
+      "title": "Another Day",
+      "length": "4:23"
+    },
+    {
+      "title": "Take the Time",
+      "length": "8:21"
+    },
+    {
+      "title": "Surrounded",
+      "length": "5:30"
+    },
+    {
+      "title": "Metropolis—Part I: 'The Miracle and the Sleeper'",
+      "length": "9:32"
+    },
+    {
+      "title": "Under a Glass Moon",
+      "length": "7:03"
+    },
+    {
+      "title": "Wait for Sleep",
+      "length": "2:31"
+    },
+    {
+      "title": "Learning to Live",
+      "length": "11:30"
+    }
+  ]
+}

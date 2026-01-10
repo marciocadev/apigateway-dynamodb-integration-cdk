@@ -1,0 +1,6 @@
+###
+# @prompt ID
+@Artist=Rush
+@Album=Moving Pictures
+
+DELETE https://{{ID}}.execute-api.us-east-1.amazonaws.com/prod/{{Artist}}/{{Album}} HTTP/1.1
