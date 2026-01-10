@@ -32,40 +32,68 @@ Este projeto implementa uma API REST para gerenciar uma coleção de álbuns mus
 
 ## 🏗️ Arquitetura
 
-```
-┌─────────────┐
-│   Cliente   │
-└──────┬──────┘
-       │ HTTP/REST
-       ▼
-┌─────────────────────────────────────┐
-│      API Gateway REST API           │
-│  ┌──────────────────────────────┐   │
-│  │  POST /album                 │   │
-│  │  DELETE /{artist}/{album}    │   │
-│  │  GET /                       │   │
-│  └──────────────────────────────┘   │
-│  • Request Validation               │
-│  • Velocity Templates               │
-│  • Error Handling                   │
-└──────┬──────────────────────────────┘
-       │ AWS Integration
-       ▼
-┌─────────────────────────────────────┐
-│        DynamoDB Table               │
-│  • Partition Key: Artist            │
-│  • Sort Key: Album                  │
-│  • Attributes: Tracks               │
-└─────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Client["🌐 Cliente"]
+        HTTP["HTTP/REST Requests"]
+    end
 
-┌─────────────────────────────────────┐
-│     CloudWatch Logs                 │
-│  • Access Logs                      │
-│  • Method Logs                      │
-│  • X-Ray Tracing                    │
-└─────────────────────────────────────┘
-```
+    subgraph APIGateway["🚪 API Gateway REST API"]
+        POST["POST /album<br/>Criar álbum"]
+        DELETE["DELETE /artist/album<br/>Remover álbum"]
+        GET["GET /<br/>Listar álbuns"]
+        
+        DELETE --> Validation
+        POST --> Validation["Request Validator<br/>JSON Schema"]
+        GET --> Templates["Velocity Templates<br/>Request/Response"]
+        Validation --> Templates
+        
+        ErrorHandling["Error Handling<br/>400, 404, 500"]
+        Templates --> ErrorHandling
+    end
 
+    subgraph AWS["☁️ AWS Services"]
+        subgraph DynamoDB["💾 DynamoDB Table"]
+            Table[("apigateway-dynamodb-integration-db")]
+            PK["Partition Key: Artist"]
+            SK["Sort Key: Album"]
+            Attr["Attributes: Tracks"]
+            
+            Table -.-> PK
+            Table -.-> SK
+            Table -.-> Attr
+        end
+
+        subgraph Monitoring["📊 Monitoring & Logging"]
+            XRay["X-Ray Tracing<br/>Distributed Tracing"]
+            CWLogs["CloudWatch Logs<br/>Access Logs<br/>Method Logs"]
+        end
+
+        subgraph IAM["🔐 IAM"]
+            Role["API Gateway Role<br/>DynamoDB Permissions<br/>X-Ray Permissions"]
+        end
+    end
+
+    HTTP --> POST
+    HTTP --> DELETE
+    HTTP --> GET
+
+    ErrorHandling -->|"AWS Integration"| Role
+    Role -->|"PutItem"| Table
+    Role -->|"DeleteItem"| Table
+    Role -->|"Scan"| Table
+
+    APIGateway -->|"Logs"| CWLogs
+    APIGateway -->|"Traces"| XRay
+    Role -->|"Writes"| CWLogs
+
+    style Client fill:#60686f
+    style APIGateway fill:#6f6451
+    style DynamoDB fill:#586559
+    style Monitoring fill:#635565
+    style IAM fill:#6f5b5e
+```
+    
 ## ✨ Funcionalidades
 
 - ✅ **CRUD completo** para álbuns musicais
