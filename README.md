@@ -111,17 +111,8 @@ Este projeto implementa uma API REST para gerenciar uma coleção de álbuns mus
 ### Comandos Disponíveis
 
 ```bash
-# Compilar TypeScript
-npm run build
-
-# Compilar em modo watch
-npm run watch
-
 # Executar testes
 npm test
-
-# Executar testes em modo watch
-npm test -- --watch
 
 # Sintetizar CloudFormation template
 npx cdk synth
