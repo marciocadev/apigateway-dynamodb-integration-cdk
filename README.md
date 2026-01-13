@@ -94,7 +94,6 @@ graph TB
     style IAM fill:#6f5b5e
 ```
 
-```plantuml
 @startuml
 !include <awslib20/AWSCommon>
 !include <awslib20/AWSSimplified.puml>
@@ -113,7 +112,7 @@ DynamoDB(DynamoDB, "DynamoDB", "")
 APIGateway -right-> DynamoDB
 ' listsprites
 @enduml
-```
+
     
 ## ✨ Funcionalidades
 
