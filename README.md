@@ -93,6 +93,27 @@ graph TB
     style Monitoring fill:#635565
     style IAM fill:#6f5b5e
 ```
+
+```plantuml
+@startuml
+!include <awslib20/AWSCommon>
+!include <awslib20/AWSSimplified.puml>
+!include <awslib20/Database/DynamoDB.puml>
+!include <awslib20/NetworkingContentDelivery/APIGateway.puml>
+
+ skinparam linetype polyline
+' skinparam linetype ortho
+
+
+package "APIGateway DynamoDB Integration" {
+APIGateway(APIGateway, "APIGateway", "")
+DynamoDB(DynamoDB, "DynamoDB", "")
+}
+
+APIGateway -right-> DynamoDB
+' listsprites
+@enduml
+```
     
 ## ✨ Funcionalidades
 
